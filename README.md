@@ -10,11 +10,18 @@
 
 ## 📖 Documentation
 
-🚧 WIP
+Many command in `Makefile` : `start` `stop` `build` ... 🙏 please read !
 
-### Install Laravel
-`make laravel-install` 
+### Install Laravel with Composer
+
+`make laravel-install`  
+
+Launch the environment
 `make start`
+
+Modifiy environnement file `.env`
+
+And enjoy 😊 !
 
 ### Update and upgrade
 
@@ -25,23 +32,22 @@ update Laravel cache, migrate database and set application online.
 
 ## 🧰 Development environment
 
-You need to have Docker installed on your system. This project use Docker compose, and a `Makefile` for run a development
+This project use Docker compose, and a `Makefile` for run a development
 environment.
 
-This command build container, install composer dependencies, start environment and seed database.
+This command build container, install composer dependencies, start environment.
 
-`make install-dev` 
-`make start`
+`make install-dev start`
 
-## 🛠 Developer tools
+### 🛠 Development tools
 
-### Database management tool
+#### Database management tool
 
 Adminer equivalent to PHPmyAdmin. All credentials are in `.env` file.
 
 `localhost:8080`
 
-### Mail capture
+#### Mail capture
 
 MailHog capture all mails form the application.
 
@@ -49,11 +55,8 @@ MailHog capture all mails form the application.
 
 ## 💼 Production environment
 
-You need to have Docker installed on your system. This project use Docker compose, and a Makefile for run a production
-environment.
+This project use Docker compose, and a Makefile for run a production environment.
 
 ### First launch
 
-`make install`  
-`make start`
-
+`make install start`
