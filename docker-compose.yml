@@ -34,6 +34,11 @@ services:
       ADMINER_DEFAULT_TYPE: 'postgresql'
     depends_on:
       - pgsql
+  node:
+    image: node:16
+    volumes:
+        - './:/var/www/'
+    working_dir: '/var/www/'
   pgsql:
     image: 'postgres:13'
     ports:
