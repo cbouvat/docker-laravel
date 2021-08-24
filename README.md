@@ -1,12 +1,15 @@
 # Docker Laravel
 
+## 🚫 Requirement
+
+- Docker engine 19.03.0+
+
 ## 🛠 Build with
 
-- Docker
-  - HTTP server : Nginx
-  - PHP 8 with Framework Laravel
-  - Node 16
-  - Database PostgreSQL 13
+- HTTP server Nginx 1.20
+- PHP 8 with Framework Laravel
+- Node 16
+- Database PostgreSQL 13
 
 ## 📖 Documentation
 
