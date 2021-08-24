@@ -16,15 +16,27 @@ Many commands are in `Makefile` file. Example `start`, `stop`, `build` and many 
 
 - Run this command `make laravel-install` for install Laravel with Composer
 - Launch the environment with `make start`
-- Modifiy environnement file `.env`
+- **⚠️ Modifiy** environnement file `.env` create by Laravel install with :
+
+```bash
+DB_CONNECTION=pgsql
+DB_HOST=pgsql
+DB_PORT=5432
+DB_DATABASE=Change this
+DB_USERNAME=Change this
+DB_PASSWORD=Change this
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=null
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
 - And enjoy 😊 !
-
-### Update and upgrade
-
-Set application in maintenance mode or shutdown with `update` or `upgrade`, this command pull code, install latest composer dependencies,
-update Laravel cache, migrate database and set application online.
-
-`make update` or `make upgrade`
 
 ## 🧰 Development environment
 
