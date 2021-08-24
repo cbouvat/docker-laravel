@@ -10,13 +10,13 @@
 
 ## 📖 Documentation
 
-Many commands are in `Makefile` file. Example `start`, `stop`, `build` and many more. Please read 🙏 this file.
+Many commands are in `Makefile` file. Example `start`, `stop`, `build` and [many more](#-list-of-commands). Please read 🙏 this file.
 
 ### Install Laravel
 
 - Run this command `make laravel-install` for install Laravel with Composer
 - Launch the environment with `make start`
-- **⚠️ Modifiy** environnement file `.env` create by Laravel install with :
+- **⚠️ Modify** environnement file `.env` create by Laravel install with :
 
 ```bash
 DB_CONNECTION=pgsql
