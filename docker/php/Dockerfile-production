@@ -31,10 +31,6 @@ RUN apt-get -y update \
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install -j$(nproc) iconv gd mysqli pdo_pgsql pdo_mysql soap bcmath gmp intl opcache
 
-# Install Xdebug
-RUN pecl install xdebug \
-    && docker-php-ext-enable xdebug
-
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -44,6 +40,5 @@ RUN mkdir -p /home/$WWWUSER/.composer && \
     chown -R $WWWUSER:$WWWUSER /home/$WWWUSER
 
 COPY php.ini /etc/php/8.0/fpm/conf.d/xy-custom.ini
-COPY xdebug.ini /usr/local/etc/php/conf.d/xy-xdebug.ini
 
 USER $WWWUSER
