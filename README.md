@@ -11,15 +11,13 @@
 - Node 16
 - Database PostgreSQL 13
 
-## 📖 Documentation
+## 📖 Install Laravel
 
-Many commands are in `Makefile` file. Example `start`, `stop`, `build` and [many more](#-list-of-commands). Please read 🙏 this file.
+Many commands are in `Makefile` file. Example `start`, `stop`, `build` and [many more](#-list-of-commands).
 
-### Install Laravel
-
+- It is not recommended to clone or fork the repository, download a copy of this Git repository
 - Run this command `make laravel-install` for install Laravel with Composer
-- Launch the environment with `make start`
-- **⚠️ Modify** environnement file `.env` create by Laravel install with :
+- **⚠️ Modify** environnement file `.env` create by Laravel installer with this :
 
 ```bash
 DB_CONNECTION=pgsql
@@ -39,6 +37,7 @@ MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
+- Launch the environment with `make start-dev`
 - And enjoy 😊 !
 
 ## 🧰 Development environment
@@ -48,9 +47,9 @@ environment.
 
 This command build container, install composer dependencies, start environment.
 
-`make install-dev start`
+`make install-dev start-dev`
 
-### 🛠 Development tools
+### Development tools
 
 #### Database management tool
 
@@ -66,15 +65,16 @@ MailHog capture all mails form the application.
 
 ## 💼 Production environment
 
-This project use Docker compose, and a Makefile for run a production environment.
 
 ### First launch
 
-`make install start`
+- **⚠️ Modify** environnement file `.env` with production parameters
+- `make install start`
 
 ## 📚 List of commands
 
 - `build` : Build docker container
+- `build-dev` : Build docker development container
 - `composer-install` : Install PHP dependencies with Composer for production
 - `composer-install-dev` : Install PHP dependencies with Composer for devellopement
 - `composer-update` : Update PHP dependencies
@@ -84,14 +84,17 @@ This project use Docker compose, and a Makefile for run a production environment
 - `ide-helper` : Generate helpers file for IDE (PHPStorm, VS Code ...)
 - `git-pull` : Reset stage and git pull
 - `install` : Run `build`, `composer-install` `laravel-storage`
-- `install-dev` : Run `build`, `composer-install-dev` `laravel-storage`
+- `install-dev` : Run `build-dev`, `composer-install-dev` `laravel-storage`
 - `laravel-install` : Install Laravel with Composer
 - `laravel-cache` : Generate all cache for Laravel
 - `laravel-storage` : Create store link for Laravel
 - `pull` : Pull the lastest Docker containers
 - `restart` : Restart Docker containers
+- `restart-dev` : Restart Docker development containers
 - `start` : Start Docker containers
+- `start-dev` : Start Docker development containers
 - `stop` : Stop Docker containers
+- `stop-dev` : Stop Docker development containers
 - `tinker` : Run Laravel Tinker
 - `test` : Run Laravel unit test
 - `up` : Set online Laravel application
