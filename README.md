@@ -3,6 +3,7 @@
 ## 🚫 Requirement
 
 - Docker engine 19.03.0+
+- Docker Compose 3.9+
 
 ## 🛠 Build with
 
