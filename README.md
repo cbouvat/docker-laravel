@@ -4,6 +4,7 @@
 
 - Docker engine 19.03.0+
 - Docker Compose 3.9+
+- Make
 
 ## 🛠 Build with
 
@@ -14,7 +15,7 @@
 
 ## 📖 Install Laravel
 
-Many commands are in `Makefile` file. Example `start`, `stop`, `build` and [many more](#-list-of-commands).
+Many commands are in `Makefile` file. Example `start`, `stop`, `build` and [many more 👇](#-list-of-commands).
 
 - It is not recommended to clone or fork the repository, download a copy of this Git repository
 - Run this command `make laravel-install` for install Laravel with Composer
@@ -43,34 +44,52 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 ## 🧰 Development environment
 
-This project use Docker compose, and a `Makefile` for run a development
-environment.
+This command build container, install composer dependencies.
 
-This command build container, install composer dependencies, start environment.
+`make install-dev`
 
-`make install-dev start-dev`
+Start environment.
+
+`make start-dev`
 
 ### Development tools
+
+#### Xdebug
+
+For Visual Studio Code, use this configuration in `.vscode/launch.json` file.
+
+```json
+{
+    "name": "Xdebug listen",
+    "type": "php",
+    "request": "launch",
+    "port": 9003,
+    "stopOnEntry": true,
+    "pathMappings": {
+        "/app": "${workspaceFolder}"
+    }
+}
+```
 
 #### Database management tool
 
 Adminer equivalent to PHPmyAdmin. All credentials are in `.env` file.
 
-`localhost:8080`
+`http://localhost:8080`
 
 #### Mail capture
 
 MailHog capture all mails form the application.
 
-`localhost:8025`
+`http://localhost:8025`
 
 ## 💼 Production environment
 
-
 ### First launch
 
-- **⚠️ Modify** environnement file `.env` with production parameters
-- `make install start`
+- **Modify** ⚠️ environnement file `.env` with production parameters
+- `make install`
+- `make start`
 
 ## 📚 List of commands
 
