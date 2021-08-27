@@ -37,10 +37,10 @@ install: build composer-install laravel-storage
 install-dev: build-dev composer-install-dev laravel-storage
 
 laravel-install:
-	docker-compose run --rm php composer create-project laravel/laravel laravel
+	docker-compose run --rm php composer create-project laravel/laravel laravel --prefer-dist
 	mv README.md README-docker.md
-	mv laravel/{*,.*} .
-	rm -R laravel
+	-mv -f ./laravel/* ./laravel/.* ./
+	-rm -rf ./laravel
 
 laravel-cache:
 	docker-compose exec php /var/www/artisan cache:clear
@@ -63,7 +63,7 @@ start:
 	docker-compose -f docker-compose-production.yml up -d
 
 start-dev:
-	docker-compose -up -d
+	docker-compose up -d
 
 stop:
 	docker-compose -f docker-compose-production.yml down --remove-orphans
@@ -82,6 +82,9 @@ up:
 	docker-compose exec php /var/www/artisan up
 
 update: down git-pull build composer-install laravel-cache database-migrate up
+
 update-dev: down git-pull build-dev composer-install-dev database-migrate up
+
 upgrade: stop git-pull pull build composer-install laravel-cache database-migrate start
+
 upgrade-dev: stop-dev git-pull pull build-dev composer-install-dev database-migrate start-dev
