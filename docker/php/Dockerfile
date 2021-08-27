@@ -43,7 +43,6 @@ RUN useradd -G www-data,root -u $WWWUID -d /home/$WWWUSER $WWWUSER
 RUN mkdir -p /home/$WWWUSER/.composer && \
     chown -R $WWWUSER:$WWWUSER /home/$WWWUSER
 
-COPY php.ini /etc/php/8.0/fpm/conf.d/xy-custom.ini
-COPY xdebug.ini /usr/local/etc/php/conf.d/xy-xdebug.ini
+COPY php.ini /usr/local/etc/php/conf.d/zz-custom.ini
 
 USER $WWWUSER
