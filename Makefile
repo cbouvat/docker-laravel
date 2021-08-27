@@ -14,19 +14,19 @@ composer-update:
 	docker-compose run --rm php composer update
 
 database-migrate:
-	docker-compose run --rm php /var/www/artisan migrate --force
+	docker-compose run --rm php /app/artisan migrate --force
 
 database-seed:
-	docker-compose run --rm php /var/www/artisan migrate:fresh --seed
+	docker-compose run --rm php /app/artisan migrate:fresh --seed
 
 down:
-	docker-compose exec php /var/www/artisan down --refresh=15
+	docker-compose exec php /app/artisan down --refresh=15
 
 ide-helper:
-	docker-compose run --rm php /var/www/artisan ide-helper:eloquent
-	docker-compose run --rm php /var/www/artisan ide-helper:generate
-	docker-compose run --rm php /var/www/artisan ide-helper:meta
-	docker-compose run --rm php /var/www/artisan ide-helper:models --nowrite
+	docker-compose run --rm php /app/artisan ide-helper:eloquent
+	docker-compose run --rm php /app/artisan ide-helper:generate
+	docker-compose run --rm php /app/artisan ide-helper:meta
+	docker-compose run --rm php /app/artisan ide-helper:models --nowrite
 
 git-pull:
 	git reset --hard
@@ -43,14 +43,14 @@ laravel-install:
 	-rm -rf ./laravel
 
 laravel-cache:
-	docker-compose exec php /var/www/artisan cache:clear
-	docker-compose exec php /var/www/artisan config:cache
-	docker-compose exec php /var/www/artisan event:cache
-	docker-compose exec php /var/www/artisan route:cache
-	docker-compose exec php /var/www/artisan view:cache
+	docker-compose exec php /app/artisan cache:clear
+	docker-compose exec php /app/artisan config:cache
+	docker-compose exec php /app/artisan event:cache
+	docker-compose exec php /app/artisan route:cache
+	docker-compose exec php /app/artisan view:cache
 
 laravel-storage:
-	docker-compose run --rm php /var/www/artisan storage:link
+	docker-compose run --rm php /app/artisan storage:link
 
 pull:
 	docker-compose pull
@@ -72,14 +72,14 @@ stop-dev:
 	docker-compose down --remove-orphans
 
 tinker:
-	docker-compose exec php /var/www/artisan tinker
+	docker-compose exec php /app/artisan tinker
 
 test:
-	docker-compose exec php /var/www/artisan config:clear
-	docker-compose exec php /var/www/artisan test
+	docker-compose exec php /app/artisan config:clear
+	docker-compose exec php /app/artisan test
 
 up:
-	docker-compose exec php /var/www/artisan up
+	docker-compose exec php /app/artisan up
 
 update: down git-pull build composer-install laravel-cache database-migrate up
 
