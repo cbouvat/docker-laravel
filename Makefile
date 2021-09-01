@@ -84,9 +84,9 @@ test:
 up:
 	docker-compose exec php /app/artisan up
 
-update: down git-pull build composer-install laravel-cache database-migrate up
+update: down git-pull composer-install laravel-cache database-migrate up
 
-update-dev: down git-pull-dev build-dev composer-install-dev database-migrate up
+update-dev: down git-pull-dev composer-install-dev database-migrate up
 
 upgrade: stop git-pull pull build composer-install laravel-cache database-migrate start
 

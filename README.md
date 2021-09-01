@@ -118,7 +118,7 @@ MailHog capture all mails form the application.
 - `tinker` : Run Laravel Tinker
 - `test` : Run Laravel unit test
 - `up` : Set online Laravel application
-- `update` : Run `down` `git-pull` `build` `composer-install` `laravel-cache` `database-migrate` `up`
-- `update-dev` : Run `down` `git-pull` `build` `composer-install-dev` `database-migrate` `up`
+- `update` : Run `down` `git-pull` `composer-install` `laravel-cache` `database-migrate` `up`
+- `update-dev` : Run `down` `git-pull` `composer-install-dev` `database-migrate` `up`
 - `upgrade` : Run `stop` `git-pull` `pull` `build` `composer-install` `laravel-cache` `database-migrate` `start`
-- `upgrade-dev` : Run `stop` `git-pull` `pull` `build` `composer-install-dev` `database-migrate` `start`
+- `upgrade-dev` : Run `stop` `git-pull` `pull-dev` `build-dev` `composer-install-dev` `database-migrate` `start`
