@@ -81,6 +81,9 @@ test:
 	docker-compose exec php /app/artisan config:clear
 	docker-compose exec php /app/artisan test
 
+test-create:
+	docker-compose run --rm php /app/artisan make:test $(name)
+
 up:
 	docker-compose exec php /app/artisan up
 

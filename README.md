@@ -117,6 +117,7 @@ MailHog capture all mails form the application.
 - `stop-dev` : Stop Docker development containers
 - `tinker` : Run Laravel Tinker
 - `test` : Run Laravel unit test
+- `test-create name=TestName` : Create run Laravel unit test
 - `up` : Set online Laravel application
 - `update` : Run `down` `git-pull` `composer-install` `laravel-cache` `database-migrate` `up`
 - `update-dev` : Run `down` `git-pull` `composer-install-dev` `database-migrate` `up`
