@@ -17,7 +17,7 @@ services:
         WWWUSER: 'laravel'
         WWWUID: '1000'
     expose:
-      - 9000
+      - 9003
     volumes:
       - '.:/app/'
     networks:
