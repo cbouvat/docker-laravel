@@ -20,6 +20,7 @@ RUN apt-get -y update \
     libpng-dev \
     libxml2-dev \
     libgmp-dev \
+    libzip-dev \
     zip \
     unzip \
     curl \
@@ -29,7 +30,7 @@ RUN apt-get -y update \
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install -j$(nproc) iconv gd mysqli pdo_pgsql pdo_mysql soap bcmath gmp intl opcache
+RUN docker-php-ext-install -j$(nproc) iconv gd mysqli pdo_pgsql pdo_mysql soap bcmath gmp intl opcache zip
 
 # Install Xdebug
 RUN pecl install xdebug \
