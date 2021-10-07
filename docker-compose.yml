@@ -16,10 +16,10 @@ services:
       args:
         WWWUSER: 'laravel'
         WWWUID: '1000'
-    expose:
-      - 9003
     volumes:
       - '.:/app/'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     networks:
       - laravel
     depends_on:
