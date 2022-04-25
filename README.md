@@ -9,7 +9,7 @@
 ## 🛠 Build with
 
 - HTTP server Nginx 1.20
-- PHP 8 with Framework Laravel
+- PHP 8.1
 - Node 16
 - Database PostgreSQL 13
 
@@ -60,14 +60,18 @@ For Visual Studio Code, use this configuration in `.vscode/launch.json` file.
 
 ```json
 {
-    "name": "Xdebug listen",
-    "type": "php",
-    "request": "launch",
-    "port": 9003,
-    "stopOnEntry": true,
-    "pathMappings": {
-        "/app": "${workspaceFolder}"
-    }
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003,
+            "pathMappings": {
+                "/app": "${workspaceFolder}"
+            }
+        }
+    ]
 }
 ```
 
