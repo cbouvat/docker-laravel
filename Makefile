@@ -14,19 +14,19 @@ composer-update:
 	docker-compose run --rm php composer update
 
 database-migrate:
-	docker-compose run --rm php /app/artisan migrate --force
+	docker-compose run --rm php php artisan migrate --force
 
 database-seed:
-	docker-compose run --rm php /app/artisan migrate:fresh --seed
+	docker-compose run --rm php php artisan migrate:fresh --seed
 
 down:
-	docker-compose exec php /app/artisan down --refresh=15
+	docker-compose exec php php artisan down --refresh=15
 
 ide-helper:
-	docker-compose run --rm php /app/artisan ide-helper:eloquent
-	docker-compose run --rm php /app/artisan ide-helper:generate
-	docker-compose run --rm php /app/artisan ide-helper:meta
-	docker-compose run --rm php /app/artisan ide-helper:models --nowrite
+	docker-compose run --rm php php artisan ide-helper:eloquent
+	docker-compose run --rm php php artisan ide-helper:generate
+	docker-compose run --rm php php artisan ide-helper:meta
+	docker-compose run --rm php php artisan ide-helper:models --nowrite
 
 git-pull:
 	git reset --hard
@@ -43,14 +43,14 @@ laravel-install:
 	-rm -rf ./laravel
 
 laravel-cache:
-	docker-compose exec php /app/artisan cache:clear
-	docker-compose exec php /app/artisan config:cache
-	docker-compose exec php /app/artisan event:cache
-	docker-compose exec php /app/artisan route:cache
-	docker-compose exec php /app/artisan view:cache
+	docker-compose exec php php artisan cache:clear
+	docker-compose exec php php artisan config:cache
+	docker-compose exec php php artisan event:cache
+	docker-compose exec php php artisan route:cache
+	docker-compose exec php php artisan view:cache
 
 laravel-storage:
-	docker-compose run --rm php /app/artisan storage:link
+	docker-compose run --rm php php artisan storage:link
 
 pull:
 	docker-compose -f docker-compose-production.yml pull
@@ -75,17 +75,17 @@ stop-dev:
 	docker-compose down --remove-orphans
 
 tinker:
-	docker-compose exec php /app/artisan tinker
+	docker-compose exec php php artisan tinker
 
 test:
-	docker-compose exec php /app/artisan config:clear
-	docker-compose exec php /app/artisan test
+	docker-compose exec php php artisan config:clear
+	docker-compose exec php php artisan test
 
 test-create:
-	docker-compose run --rm php /app/artisan make:test $(name)
+	docker-compose run --rm php php artisan make:test $(name)
 
 up:
-	docker-compose exec php /app/artisan up
+	docker-compose exec php php artisan up
 
 update: down git-pull composer-install laravel-cache database-migrate up
 
