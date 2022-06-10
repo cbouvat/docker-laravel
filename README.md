@@ -11,7 +11,7 @@
 - HTTP server Nginx 1.20
 - PHP 8.1
 - Node 16
-- Database PostgreSQL 13
+- Database PostgreSQL 14
 
 ## 📖 Install Laravel
 
