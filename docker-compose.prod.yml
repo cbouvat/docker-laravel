@@ -1,6 +1,6 @@
 services:
   http:
-    image: nginx:1.20
+    image: nginx:1.25
     restart: always
     ports:
       - '80:80'
@@ -9,27 +9,33 @@ services:
       - './docker/nginx/nginx.conf:/etc/nginx/nginx.conf'
     depends_on:
       - php
-    networks:
-      - laravel
   php:
     build:
       context: ./docker/php/
-      dockerfile: Dockerfile-production
-      args:
-        WWWUSER: 'laravel'
-        WWWUID: '1000'
+      dockerfile: prod.Dockerfile
     restart: always
     volumes:
-      - '.:/app/'
-    networks:
-      - laravel
+      - ./:/app/
+    working_dir: /app/
     depends_on:
       - pgsql
   node:
-    image: node:16
+    image: node:20
     volumes:
-        - './:/app/'
-    working_dir: '/app/'
+      - ./:/app/
+    working_dir: /app/
+    command: "npm run build"
+  # mariadb:
+  #   image: mariadb:11
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+  #     MARIADB_DATABASE: "${DB_DATABASE}"
+  #     MARIADB_USER: "${DB_USERNAME}"
+  #     MARIADB_PASSWORD: "${DB_PASSWORD}"
+  #   volumes:
+  #     - ./docker/mariadb/datas:/var/lib/mysql
   pgsql:
     image: postgres:14
     restart: always
@@ -42,13 +48,5 @@ services:
       POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
     volumes:
       - 'pgsql:/var/lib/postgresql/data'
-    networks:
-      - laravel
     healthcheck:
       test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE:-laravel}", "-U", "${DB_USERNAME:-laravel}" ]
-networks:
-  laravel:
-    driver: bridge
-volumes:
-  pgsql:
-    driver: local

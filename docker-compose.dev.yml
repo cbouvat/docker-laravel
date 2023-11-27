@@ -1,0 +1,50 @@
+services:
+  php:
+    build:
+      context: ./docker/php/
+      dockerfile: dev.Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - ./:/app/
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    depends_on:
+      - pgsql
+  node:
+    image: node:20
+    ports:
+      - 5173:5173
+    volumes:
+      - ./:/app/
+    working_dir: /app/
+    command: "npm run dev"
+  # mariadb:
+  #   image: mariadb:11
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     MARIADB_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+  #     MARIADB_DATABASE: "${DB_DATABASE}"
+  #     MARIADB_USER: "${DB_USERNAME}"
+  #     MARIADB_PASSWORD: "${DB_PASSWORD}"
+  #   volumes:
+  #     - ./docker/mariadb/datas:/var/lib/mysql
+  pgsql:
+    image: postgres:16
+    ports:
+      - '${FORWARD_DB_PORT:-5432}:5432'
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_DB: '${DB_DATABASE:-laravel}'
+      POSTGRES_USER: '${DB_USERNAME:-laravel}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - './docker/pgsql/datas:/var/lib/postgresql/data'
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE:-laravel}", "-U", "${DB_USERNAME:-laravel}" ]
+  mailpit:
+    image: axllent/mailpit:latest
+    ports:
+      - 1025:1025
+      - 8025:8025

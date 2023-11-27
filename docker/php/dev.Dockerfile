@@ -1,18 +1,15 @@
-FROM php:8.1-fpm
-
-# Arguments defined in docker-compose.yml
-ARG WWWUSER
-ARG WWWUID
+FROM php:8.2-cli
 
 # Set working directory
 WORKDIR /app/
 
+# Set environment variables
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=UTC
 
 # Install system dependencies and clear cache
-RUN apt-get -y update \
-    && apt-get install -y \
+RUN apt -y update \
+    && apt install -y \
     libfreetype6-dev \
     libpq-dev \
     libicu-dev \
@@ -23,14 +20,13 @@ RUN apt-get -y update \
     libzip-dev \
     zip \
     unzip \
-    curl \
-    git \
-    && apt-get clean \
+    mariadb-client \
+    && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install -j$(nproc) iconv gd mysqli pdo_pgsql pdo_mysql soap bcmath gmp intl opcache zip
+RUN docker-php-ext-install -j$(nproc) iconv gd mysqli pdo_pgsql pdo_mysql soap bcmath gmp intl opcache zip exif
 
 # Install Xdebug
 RUN pecl install xdebug \
@@ -39,11 +35,11 @@ RUN pecl install xdebug \
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create system user to run Composer and Artisan Commands
-RUN useradd -G www-data,root -u $WWWUID -d /home/$WWWUSER $WWWUSER
-RUN mkdir -p /home/$WWWUSER/.composer && \
-    chown -R $WWWUSER:$WWWUSER /home/$WWWUSER
+# Copy PHP config
+COPY php.dev.ini /usr/local/etc/php/conf.d/zz-custom.ini
 
-COPY php.ini /usr/local/etc/php/conf.d/zz-custom.ini
+# Lauch Laravel PHP server on port 80
+CMD php artisan serve --host=0.0.0.0 --port=80
 
-USER $WWWUSER
+# Expose port 80
+EXPOSE 80
