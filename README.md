@@ -17,7 +17,7 @@
 
 Many commands are in `Makefile` file. Example `up`, `down`, `upgrade` and [many more 👇](#list-of-commands).
 
-- It is not recommended to clone or fork the repository, download a copy of this Git repository and extract it.
+- [Download the latest release of this repository](https://github.com/cbouvat/docker-laravel/releases).
 - Run this command `make install` for install Laravel with Composer
 - **⚠️ Modify** environnement file `.env` create by Laravel installer with this :
 
@@ -30,7 +30,7 @@ DB_USERNAME=Change this
 DB_PASSWORD=Change this
 
 MAIL_MAILER=smtp
-MAIL_HOST=mailhog
+MAIL_HOST=mailpit
 MAIL_PORT=1025
 MAIL_USERNAME=null
 MAIL_PASSWORD=null
@@ -39,22 +39,17 @@ MAIL_FROM_ADDRESS=null
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
-- Launch the environment with `make start-dev`
-- And enjoy 😊 !
+The project is ready to use 🎉 ! Go to `http://localhost` for see the application.
+
+## List of commands
+
+All commands are in `Makefile` file with description. Open this file for more informations.
 
 ## Development environment
 
-This command build container, install composer dependencies.
+Start environment with this command `make up` and stop with `make down`. You can use `make upgrade-dev` for upgrade the environment.
 
-`make install`
-
-Start environment.
-
-`make up`
-
-### Development tools
-
-#### Xdebug
+### Xdebug
 
 For Visual Studio Code, use this configuration in `.vscode/launch.json` file.
 
@@ -75,7 +70,7 @@ For Visual Studio Code, use this configuration in `.vscode/launch.json` file.
 }
 ```
 
-#### Database 
+### Database 
 
 The database is accessible on port `5432` with this parameters :
 
@@ -84,20 +79,8 @@ The database is accessible on port `5432` with this parameters :
 
 Use for example [DBeaver](https://dbeaver.io/) for connect to the database.
 
-#### Mail capture
+### Mail capture
 
-MailHog capture all mails form the application.
+Mailpit capture all mails form the application.
 
 `http://localhost:8025`
-
-## Production environment
-
-### First launch
-
-- **Modify** ⚠️ environnement file `.env` with production parameters
-- `make install`
-- `make up`
-
-## List of commands
-
-All commands are in `Makefile` file with description. Open this file for more informations.
