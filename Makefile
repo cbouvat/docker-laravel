@@ -47,7 +47,7 @@ eslint: ## Run eslint
 	docker compose run --rm node npm run eslint
 
 install: copy-docker-compose-dev upgrade laravel-install copy-env up npm-install artisan-key-generate artisan-storage ## Install Project
-    @echo "✅ Project is installed and running, edit .env"
+	@echo "✅ Project is installed and running, edit .env"
 
 git-pull:
 	git reset --hard
