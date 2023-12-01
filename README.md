@@ -9,7 +9,7 @@
 ## Build with
 
 - HTTP server Nginx 1.25
-- PHP 8.2
+- PHP 8.3
 - Node 20
 - PostgreSQL 16 or MariaDB 11
 
