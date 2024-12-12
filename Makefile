@@ -59,7 +59,7 @@ help: ## Display this help
 	@echo "👉 Available commands open Makefile to see all commands"
 
 laravel-install: ## Install Laravel
-	docker-compose run --rm php composer create-project laravel/laravel laravel --prefer-dist
+	docker compose run --rm php composer create-project laravel/laravel laravel --prefer-dist
 	mv README.md README-docker.md
 	-mv -f ./laravel/* ./laravel/.* ./
 	-rm -rf ./laravel
