@@ -2,14 +2,14 @@
 
 ## Requirement
 
-- Docker engine
+- Docker
 - Docker Compose
 - Make
 
 ## Build with
 
 - HTTP server Nginx 1.25
-- PHP 8.3
+- PHP 8.4
 - Node 20
 - PostgreSQL 16 or MariaDB 11
 
