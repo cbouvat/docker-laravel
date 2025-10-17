@@ -10,7 +10,7 @@
 
 - HTTP server Nginx 1.25
 - PHP 8.4
-- Node 20
+- Node 25
 - PostgreSQL 16 or MariaDB 11
 
 ## Install Laravel
