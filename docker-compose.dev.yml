@@ -12,7 +12,7 @@ services:
     depends_on:
       - pgsql
   node:
-    image: node:20
+    image: node:25
     ports:
       - 5173:5173
     volumes:
